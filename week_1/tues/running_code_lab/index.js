@@ -153,7 +153,7 @@ let disneyPlus = 5;
 let youtubePrem = 10;
 let peacock = 10;
 
-
+///Users/luckyphan/Desktop/DevmountainBP/week_1/tues/running_code_lab/index.js
 
 
 
