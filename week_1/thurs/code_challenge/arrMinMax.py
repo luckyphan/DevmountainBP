@@ -1,0 +1,5 @@
+input_string = input('Enter elements of a list separated by space \n')
+user_list = input_string.split()
+max = max(user_list, key=int)
+min = min(user_list, key=int)
+print(max + ' ' + min)
