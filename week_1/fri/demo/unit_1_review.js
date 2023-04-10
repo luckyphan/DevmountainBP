@@ -179,11 +179,11 @@ for(let i = 0; i < colors.length; i++){
         -- git
         -- github
         -- git init
-        -- git clone
-        -- git status
-        -- git add
-        -- git commit
-        -- git push
+        -- git clone url from github to copy code from cloud to local machine
+        -- git status status of repo
+        -- git add  adding/tracking
+        -- git commit snapshot of your code 
+        -- git push pushing code from git repo to github repo
     - How to push git to github
 */
 
