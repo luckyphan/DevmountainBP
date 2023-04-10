@@ -357,12 +357,12 @@ console.log(hpWorld(4))
 */
 
 //CODE HERE
-console.log('!!!For problem 20, I did not have a bug but I will re-write as if the error was there...')
+console.log('!!!For problem 20, I did not have a bug but I will re-write as if the error was there... then use floor to prevent the decimals')
 const honeydukes = function(gold){
   let frog = 3;
   let totalFrogs = gold/frog;
 
-  return `You get ${totalFrogs} frogs `;
+  return `You get ${Math.floor(totalFrogs)} frogs `;
 }
 console.log(honeydukes(4))
 
