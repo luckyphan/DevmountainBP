@@ -168,11 +168,12 @@ function ingredients(obj){
   arr.push(its) 
   arr.push(all) 
   arr.push(good)
-  
+  //HOW TO LOOP WITH NEW VARIABLE NAMES being listed
+  //const carrot = {carb:its, fat:all, protein:good } = obj;
   // for (let attribute in carrot) {
   // console.log(`The ${attribute} is ${obj[attribute]}.`);
   // }
-//HOW TO LOOP WITH NEW VARIABLE NAMES
+
   return arr;
 };
 
@@ -250,13 +251,13 @@ class Wizard{
     this.favoriteSpell = favoriteSpell
   }
   //functions in classes do not need the keyword function
-  castSpell(name, favoriteSpell) {
+  castSpell({name, favoriteSpell}) {
     console.log(`${name} has cast ${favoriteSpell}`)
   }
 }
 
 let gandolf = new Wizard('Gandolf', 8000, 'Wingardium Leviosa');
-gandolf.castSpell(gandolf.name,gandolf.favoriteSpell)
+gandolf.castSpell(gandolf)
 
 //////////////////////////// PROBLEM 14 ////////////////////////////
 /*
@@ -291,7 +292,7 @@ class Phone {
   this.price = price
   this.sold = false
 
- }sell(brand,model){
+ }sell({brand,model}){
     this.sold=true;
     console.log(`${brand} ${model} has been sold.`)
   }
@@ -303,7 +304,7 @@ class Phone {
 const iphone = new Phone('apple','iphone',165, 'red',1000)
 //before sell
 console.log(iphone)
-iphone.sell(iphone.brand,iphone.model)
+iphone.sell(iphone)
 //after sell
 console.log(iphone)
 
@@ -344,7 +345,7 @@ console.log(newPhone1)
 
 //Code Here 
 console.log(nokia)
-nokia.sell(nokia.brand,nokia.model)
+nokia.sell(nokia)
 console.log(nokia)
 
 
