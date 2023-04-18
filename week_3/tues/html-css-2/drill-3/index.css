@@ -1,0 +1,36 @@
+
+.top-box{
+    width: 100vw;
+    background-color: rgb(220, 220, 221);
+    height: 75px;
+}
+.small-box {
+  position:absolute;
+  height:50px;
+  width:50px;
+  top:20px;
+  left: 30px;
+  background-color: rgb(74, 145, 237);
+}
+.text-box{
+    text-align: left;
+    margin:10px;
+    position: relative;
+    padding: 20px;
+}
+#size{
+    height:130px;
+    width: 100vw;
+}
+.bbox{
+  background-color: rgb(74, 145, 237);
+}
+.ybox{
+  background-color: rgb(227, 232, 78);
+}
+.gbox{
+  background-color: rgb(113, 232, 176);
+}
+.mbox{
+  background-color: rgb(195, 230, 130);
+}

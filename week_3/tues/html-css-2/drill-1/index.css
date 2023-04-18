@@ -1,0 +1,48 @@
+body{
+    background-color: black;
+}
+.top{
+    width:100vw;
+    height:123px;
+    background-color: rgb(58, 58, 61);
+}
+.sides{
+    width:100vw;
+    height:100vh;
+    background-color: rgb(198, 198, 203);
+}
+.middle{
+    margin: auto;
+    width:75%;
+    height:75%;
+    background-color: white;
+}
+.bottom{
+    margin: auto;
+    width:75%;
+    height:75%;
+    background-color: black;
+}
+/* 
+.bottom {
+    background-color: lightgrey;
+    width: 73%;
+    padding: 50px;
+    margin: auto;
+    height: 100vh;
+}
+
+.top{
+    position: inherit;
+    left: 0;
+    margin:auto;
+    width:100vw;
+    height:123px;
+    background-color: rgb(58, 58, 61);
+}
+.middle{
+    margin:auto;
+    width:500px;
+    height: 90vh;
+    background-color:white;
+} */
