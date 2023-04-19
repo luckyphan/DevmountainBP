@@ -49,6 +49,23 @@ function maxProfit2(arr){
 }
 }
 
+// function maxProfit2(arr) {
+//     let maxIndex = -Infinity;
+//     let minIndex = Infinity;
+
+//     while (minIndex > maxIndex) {
+//         let min = Math.min(...arr)    
+//         let max = Math.max(...arr)    
+//         maxIndex = arr.indexOf(max);
+//         minIndex = arr.indexOf(min);
+//         if (minIndex < maxIndex) {
+//             console.log(max - min);
+//         } else {
+//             arr.splice(minIndex, 1);
+//         }
+//     }
+// }
+
 
 let arr = [7, 9, 5, 6, 3, 2]
 // let arr = [1, 2, 3, 4, 5]
