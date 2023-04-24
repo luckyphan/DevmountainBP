@@ -1,0 +1,55 @@
+/*  */
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+:root{
+    --font-family-logo:'Nanum Pen Script', cursive;
+    --font-family-regular:'Noto Serif', serif;
+    --primary-color: #353D2F;
+    --secondary-color: #CEDFD9;
+}
+
+.header{
+    height: 10vh;
+    width: 100vw;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: var(--font-family-logo);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image{
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://cdn10.phillymag.com/wp-content/uploads/sites/3/2021/03/eeva-pizza-9x6-1.jpg" 
+    );
+
+}
+
+.buy-btn{
+    padding:5px;
+    border-radius: 15px;
+    border:none;
+    background-color: var(--primary-color);
+    color:var(--secondary-color);
+    height:45px;
+    width: 110px;
+    font-family: var(--font-family-regular);
+    position: relative;
+    bottom:75px;
+    left:45%;
+}
+
+#pizza-display {
+    justify-content: space-evenly;
+    
+}

@@ -12,18 +12,28 @@
 
 /*****************  Query  *****************/
 /*
-        start with ? then key-value 
+        start with ? then key=value 
         starts after endpoint
-        ?name = lucky
+        ?name=lucky
+        & to add more queries
+        handler function app.get('/api/users')
+
 */
 
 /*****************  Params  *****************/
 /*
         endpoint comes after domain
         params is after the endpoint with no questionmark
+        denote with colon and when "hit" endpoint, "send" value we want param to have
+            // server code
+            app.get('/api/users/:id')
+
+            // front end code
+            axios.get('/api/users/3')
+            .then(...)
 */
-/*****************  Parst of Request  *****************/
-/*
+/*****************  Parts of Request  *****************/
+/*  request object is passed in by express as argument to handler functions
     Header:
         part of request that holds information of the request being made
         -status codes, ocntent type, when quest made...
@@ -32,7 +42,24 @@
         optional, where daya is stores that want to be sent thorugh the request
         -form where on submit, performs request, sends the information through the body
         -in JS, send object for body
+
+    Access
+        app.put('/api/users/:id', (req, res) => {
+        console.log(req.params)
+        console.log(req.query)
+        console.log(req.body)
+        })
 */
+
+/*****************  Parts of Response  *****************/
+/*
+    response object is the information the server will send back to the client 
+    comes with status codes
+        app.get('/api/users', (req, res) => {
+        res.status(200).send(users)
+        })
+ */
+
 
 /*****************  JSON  *****************/
 /*
@@ -58,7 +85,7 @@
         handle asynchronous actions
 */
 
-// anyhting coming from JS v8 is executed by the stack, webAPI is push to callback queue
+// anything coming from JS v8 is executed by the stack, webAPI is push to callback queue
 
 /*****************  Axios  *****************/
 /*
@@ -137,4 +164,28 @@
    *    Response
    *        200 OK
    *        text/html
+   * 
+   *    NPM
+   *        go to the file, then in the terminal use npm i
+   *        then access the server file we want to use and run using node, in this case node server/index.js
+   * 
+   * 
+   *    Server setup
+   *        lines below need to be imported to top of file
+   *            const express = require('express')
+                const app = express()
+                app.use(express.json())  // When we want to be able to accept JSON.
+                app.listen(4040, () => console.log('Server running on 4040'))
+
+            Endpoints
+                define how server/API can be interacted with
+                specify type of request server can receive and endpoint URL for request and handler functions
+                    app.get('/api/users', handlerFunction)
+
+            Handler Functions   
+                functionality that should occur when request made to endpoint
+                has request and response param
+                    app.get('/api/users', (req, res) => {
+                    // functionality goes here
+                    })
    */

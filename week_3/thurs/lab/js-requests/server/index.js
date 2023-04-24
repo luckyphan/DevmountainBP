@@ -3,8 +3,6 @@ const cors = require('cors')
 const app = express()
 const port = 3000
 
-const baseURL = `http://localhost:${port}`
-
 
 app.use(cors());
 app.use(express.json());

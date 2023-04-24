@@ -164,11 +164,21 @@ document.getElementById('repeat-button').addEventListener('click', repeatMyParam
 
     Outside of your new function, select the button with the id "query-button" and add a click event 
     listener that calls your function.
+    : Send no queries on the URL -- what happened? 
+        nothing occured
+    2: Send more than 1 query on the URL -- what happened? 
+    returned object Object array with message you sent more than 1 query
 */
 
 // CODE HERE
 const makeQuery= () => {
-    axios.get(`http://localhost:3000/query-test?goodpizza=25`).then((res) => {
+    axios.get(`http://localhost:3000/query-test?goodpizza=25&numpizza=88`).then((res) => {
+        //****for the one query*****
+        // rpt.textContent = res.data;
+        // rpt.style.display = 'block';
+        // console.log(res.data)
+        //****for the two query*****
+        // let queries = res.data.substring(1).split('$')
         rpt.textContent = res.data;
         rpt.style.display = 'block';
         console.log(res.data)
@@ -197,7 +207,8 @@ document.getElementById('query-button').addEventListener('click', makeQuery)
 
 // PROBLEM 10 
 /*
-    In the function that you wrote for Problem 8, change the URL to test a couple different scenarios. 
+    In the function that you wrote for Problem 8, change the URL to test a 
+    couple different scenarios. 
 
     1: Send no queries on the URL -- what happened? 
 
@@ -214,15 +225,18 @@ document.getElementById('query-button').addEventListener('click', makeQuery)
 
 //PROBLEM 11
 /*
-    You are going to add the ability to POST to the server. You'll need to create a small form and write a function that makes a post request. Then you'll attach that function to the submit event on the form. We'll be creating a list of foods. 
+    You are going to add the ability to POST to the server. You'll need to create a small form and write a function that makes a post request. 
+    Then you'll attach that function to the submit event on the form. We'll be creating a list of foods. 
 
-    In the index.html file inside of the client folder, create a form with one text input field and a button. The input field should have a placeholder that tells the user to enter a food. And the button should indicate that it will add food into a list. 
+    In the index.html file inside of the client folder, create a form with one text input field and a button. The input field should have a placeholder 
+    that tells the user to enter a food. And the button should indicate that it will add food into a list. 
 
     In this file (script.js), create a function called createFood. 
     
     Inside the function, select the input you just created in the HTML and save it to a variable called foodInput. 
     
-    Next, create an object called body inside the function. It should have one key-value pair. The key should be newFood (make sure to match the case and spelling exactly) and the value should be the value of the food input. 
+    Next, create an object called body inside the function. It should have one key-value pair. The key should be newFood (make sure to match the case 
+        and spelling exactly) and the value should be the value of the food input. 
 
     Now make an axios post request to /food. Inside the parentheses where you passed the URL in, pass in body as the second argument. 
 
@@ -232,3 +246,26 @@ document.getElementById('query-button').addEventListener('click', makeQuery)
 */
 
 // CODE HERE 
+// let rpt = document.querySelector('#repeat-text');
+let form = document.querySelector('#foodForm')
+const createFood = (event) => {
+    event.preventDefault()
+    let foodInput = document.querySelector('#food')
+    let body = {
+        'newFood': foodInput.value
+    }
+    foodInput.value = ''
+    axios.post('http://localhost:3000/food',body).then(res =>{
+        // console.log(res.data)
+        rpt.textContent = res.data;
+        rpt.style.display = 'block';
+    }).catch(err => {
+        console.log(err)
+    })
+    
+}
+form.addEventListener('submit',createFood)
+/**
+ * use query selector to access the form, and on form submission, createFood method is invoked
+ * where before automatically doing the actions, 
+ */

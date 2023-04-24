@@ -1,4 +1,37 @@
 <!DOCTYPE html>
+
+
+
+<!-- *********************  FORMS   ************************** 
+
+    input 
+        single lines of text
+        radio buttons
+        checkboxes
+    select & option
+        makes dropboxes
+        select is parent element and each option is wrapped in option tags
+    textarea
+        blocks of multi-line textb
+
+ -->
+
+<!-- *********************  INPUT   ************************** 
+    type: attribute of the tag that tells the browser that input to render
+    placeholder: placeholder in empty input fields
+        text: text in field
+        radio: only one value can be selected
+            value: tells input what the value is
+        checkbox: can have multiple values to be selected
+-->
+
+<!-- *********************  SELECT   **************************
+    <select>
+        <option></option>
+        <option></option>
+    </select>
+-->
+
 <!-- LOADING JAVASCRIPT-->
 <!-- 1. can use inline JS with the script tag -->
 <!-- 2. can import code from JS file using the script tag -->
@@ -7,4 +40,130 @@
 <!-- Web API -->
 <!-- document API is used to manipulate web page contents by using the DOM (document object model) -->
 
+
+<!-- *********************  DOM   **************************
+    tree that stores HTML elements as objects
+    
+    ACCESS ELEMENTS
+        document.querySelector('selector')
+            - returns first HTML elements matching selector, that are always in quotes
+        document.querySelectorAll('selector')
+            - returns the NodeList that acts similarly to an array
+
+    MANIPULATE ELEMENTS
+        access using the querySelector then change the element/attributes
+
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    
+    <img src="cat.jpg">
+    const catPhoto = document.querySelector('img');
+    console.log(catPhoto.getAttribute('src'));  // => 'cat.jpg'
+    catPhoto.setAttribute('src', 'cat2.png')
+
+        RESULT:     <img src="cat2.png">
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+    LIST OF ELEMENT'S CLASSES
+    document.querySelector(id/class).classList
+
+        ADD:     document.querySelector(id/class).classList.add('')
+        REMOVE:  document.querySelector(id/class).classList.remove('')
+
+
+    CREATE/REMOVE DOM ELEMENTS
+        create and append HTML into DOM
+            document.createElement
+            element.appendChild
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+            <article>
+            <h1>Title</h1>
+            </article>
+
+            const article = document.querySelector('article')
+            const newPara = document.createElement('p')
+            newPara.textContent = 'This is a new paragraph.'
+
+            article.appendChild(newPara)
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+        remove
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+        <div class='remove'>Remove me!</div>
+
+        const myDiv = document.querySelector('.remove')
+        myDiv.remove()
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+-->
+
+<!-- *********************  EVENT DRIVEN PROGRAMMING   **************************
+    source/target: where event is coming from
+    emitter/dispatcher: notifies system that even occured
+    listeners/handlers: works together to listen 
+    loop: making all above work together
+
+    Mouse events
+        click — when you click on an element
+        dblclick — when you double-click on an element
+        mouseover — when the mouse is on top of an element
+
+    Input events
+        change — when the value of an input element changes
+
+    Form events
+        submit — when a form is submitted
+
+    ADDING EVENT LISTENERS
+        HTMLElement.addEventListener(eventType, callback)
+            eventType — the type of event to listen for
+            callback — the function to call when that event happens
+        
+    careful not to use () in callback portion because the type changes to the result of the function call rather
+    than the expected function object
+
+    EVENT OBJECT
+        contains data about the event that occured
+            cancel, get target, position of mouse event occurred
+        callback needs parameter to access Event object
+
+        cancelling events
+            Event.preventDefault()
+
+        source of events (HTML element returned with all properties and methods)
+            Event.target()
+
+
+            <button class="text-changer" id="apples">
+            Change to "apples"!
+            </button>
+            <button class="text-changer" id="bananas">
+            Change to "bananas"!
+            </button>
+            <button class="text-changer" id="strawberries">
+            Change to "strawberries"!
+            </button>
+
+            const section = document.querySelector('section')
+            const appleBtn = document.querySelector('#apples')
+            appleBtn.addEventListener('click', () => {
+            section.textContent = "apples";
+            });
+
+            const bananaBtn = document.querySelector('#bananas')
+            bananaBtn.addEventListener('click', () => {
+            section.textContent = "bananas;
+            });
+
+            const strawberryBtn = document.querySelector('#strawberries')
+            strawberryBtn.addEventListener('click', () => {
+            section.textContent = "strawberries";
+            });
+
+            If we take advantage of Event.target, we can avoid repetition
+
+            const section = document.querySelector('section')
+            const btns = document.querySelectorAll('.text-changer')
+            for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', e => {
+            section.textContent = e.target.id
+            })
+            }
+-->
 </html>
