@@ -43,7 +43,9 @@
 /*
  *   const express = require('express') (bring in)
      const app = express() (new var)
+     const cors = requre('cors') (new var)
      app.use(express.json())  // When we want to be able to accept JSON. (app has access to functions and methods)
+     app.use(cors())
      app.listen(4040, () => console.log('Server running on 4040')) (makes server run)
 */
 

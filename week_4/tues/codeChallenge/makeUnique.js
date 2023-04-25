@@ -1,10 +1,5 @@
 function makeUnique(str){
-    var letters = new Set();
-    const arr = str.split("");
-    arr.forEach(ltr => {
-        letters.add(ltr);
-    });
-    console.log([...letters].join(''))
+    console.log([...new Set(str)].join(''))
 }
 
 makeUnique('helloworld')
