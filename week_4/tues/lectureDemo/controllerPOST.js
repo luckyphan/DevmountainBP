@@ -48,7 +48,7 @@
 /**
  *  is used to update existing info and doesnt need all properties of object
  * 
- *      //the 'Dragon' username will be updated to 'Dragon2' FRONT END
+ *      //FRONT END the 'Dragon' username will be updated to 'Dragon2' 
         let userUpdated = {
         username: 'Dragon2'
         }
@@ -134,3 +134,113 @@
         }
         }
  */
+
+// script.js
+// const pokedex = document.querySelector('.pokedex')
+
+// for(let i=1; i< 151; i++){
+//     let pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`
+//     console.log(pokeImg);
+
+//     let imgTag = document.createElement('img')
+//     imgTag.src = pokeImg
+//     pokedex.appendChild(imgTag)
+// }
+
+// let query = document.querySelector('input')
+// let searchBtn = document.querySelector('button')
+
+// const submitHandler = (event) => {
+//     event.preventDefault();
+//     console.log(query.value);
+
+//     let pokemon = query.value
+
+//     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+//         .then((res) => {
+//             let img = document.querySelector('#pokeImg')
+//             img.src = res.data.sprites.front_default
+//             console.log(res.data.sprites.front_default);
+            
+//             // let imgs = document.querySelectorAll('.pokeImgs');
+//             // imgs.forEach(el => el.src = res.data.sprites.front_default)
+//         })
+//         .catch(err => console.log(err))
+// }
+// searchBtn.addEventListener('click', submitHandler);
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Document</title>
+//     <link rel="stylesheet" href="style.css">
+// </head>
+// <body>
+//     <div class="container">
+//         <h1>Welcome to the Pokemon Demo</h1>
+
+//         <input type="text">
+//         <button>Search</button>
+//         <img id="pokeImg" src="" alt="">
+//         <div class="pokedex"></div>       
+//     </div>
+//     <script src="./node_modules/axios/dist/axios.min.js"></script>
+//     <script src="script.js"></script>
+// </body>
+// </html>
+/**const bcrypt = require("bcryptjs");
+let chats = [
+  //this is what it should look like
+  // {
+  //     message:['hakuna matata','hakuyta'],
+  //     pin:1234
+  // },
+  // {
+  //     message:['lets go','vamos'],
+  //     pin:1235
+  // }
+];
+
+module.exports = {
+  createMessage: (req, res) => {
+    // console.log(req.body);
+    //destructuring the body
+    const { pin, message } = req.body;
+    //check if the pin already exists
+    for (let i = 0; i < chats.length; i++) {
+      //if it does then we can just append to the array
+      //comparySync will return true if pin matches and false otherwise
+      const existing = bcrypt.compareSync(pin,chats[i].pinHash)
+        if(existing){
+            chats[i].messages.push(message)
+            //creating a new object to send to the front-end so we can remove the pinhash
+            let messagesToReturn = {...chats[i]}
+            delete messagesToReturn.pinHash
+            res.status(200).send(messagesToReturn)
+            return
+        }
+    }
+    
+    //if it does not we will create a new object and push it to the array
+
+    //encrypt our pin before we send it to the database/array
+    const salt = bcrypt.genSaltSync(10)
+    // console.log(salt)
+    //creating pinHash from pin using the hashSync method 
+    const pinHash = bcrypt.hashSync(pin,salt)
+    const newObj = {
+      pinHash,
+      messages: [message],
+    };
+    
+    //pushing it to db/array
+    chats.push(newObj);
+    //creating a new object to send to the front-end so we can remove the pinhash
+    let messagesToReturn = {...newObj}
+    delete messagesToReturn.pinHash
+    console.log(chats);
+    res.status(200).send(messagesToReturn);
+  },
+}; */

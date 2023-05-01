@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
+const bcrypt = require("bcryptjs");
 
 // Mock database to store usernames and passwords by username.
 const db = {
@@ -75,12 +76,28 @@ app.get("/", (req, res) => {
 // Handle user login.
 app.post("/login", (req, res) => {
   // TODO: Get the username and password from form data
+  const {username, password} = req.body
   // TODO: Attempt to retrieve the user from the database
+  // for (const key in db) {
+    const user = db[username]
+    console.log(user)
+    if (user && user.password === password) {
+      req.session.username = username;
+      req.session.success = "Congrats";
+      res.redirect('/login/success')
+    }else{
+      req.session.error = "Error";
+      res.redirect('/')
+    }
+      
+    
+    
   // TODO: If the user exists, check if the password matches the user's password
   // TODO: Log the user in by storing their username in the session
   // TODO: Display a success message and redirect to /login/success
   // TODO: If the user doesn't exist or the password doesn't match, display an error
   //       message and redirect to the homepage
+    
 });
 
 // Handle user registration.
@@ -91,6 +108,25 @@ app.post("/register", (req, res) => {
   // TODO: Display a success message to the user
   // TODO: If the user already exists, display an error message
   // TODO: Either way, redirect to the homepage so they can log in
+
+  const {username, password} = req.body
+  // TODO: Attempt to retrieve the user from the database
+  // for (const key in db) {
+    const user = db[username]
+    if( !db[username] ) {
+     db[username] = {user,password: bcrypt.hashSync(password) }
+     req.session.success = "Successfully registered"
+    }
+    else{
+      req.session.error = "Cannot create user. Try logging in"
+    }
+    //   req.session.username = username;
+    //   req.session.success = "Congrats";
+    //   res.redirect('/login/success')
+    // }else{
+    //   req.session.error = "Error";
+      res.redirect('/')
+    // }
 });
 
 // A restricted route that can only be accessed if the user is logged in.

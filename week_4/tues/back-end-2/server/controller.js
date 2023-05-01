@@ -9,6 +9,7 @@ module.exports = {
     },
     createHouse : (req,res) => {
         id++;
+        //spread operator to destructure
         let newHouse = {...req.body, id : id};
         db.push(newHouse);
         res.status(200).send(db);

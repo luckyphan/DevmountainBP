@@ -1,30 +1,31 @@
-//imports and packages needed to create/run server
-const express = require ('express')
-const cors = require('cors')
+//requires the express and cors 
+const express = require("express");
+//cors package enables client/server uncomplicated communication
+const cors = require("cors")
+//reuses express commands
+const app = express();
 
-//initializing express, minimizes code
-const app = express()
+/*                      ***MIDDLEWARE***                    */
+//enables express server to use JSON objects
+app.use(express.json());
+//enables express server to use cors functionality
+app.use(cors());
 
-//middleware that enables client/server communication send/receive json
-app.use(express.json())
-app.use(cors()) //cross origin region sharing share across different ports
-
-// endpoint send friends array to client
-app.get('/api/users',(req,res)=> {
+app.get("/api/users" , (req,res) => {
     let friends = ["Nitin", "Eric", "Jeddy", "Cameron", "Riley"];
     res.status(200).send(friends);
 });
 
-//endpoint that tells the weather today : indicate that temp is param
-//runs with http://localhost:4000/weather/
-app.get('/weather/:temperature',(req,res)=> {
-    const {temperature} = req.params;
-    const phrase = `<h3>It was ${temperature}</h3>`;
+/*                      ***REQUESTS***                    */
+//check the weather
+//sends in the temperature as params
+//runs on http://localhost:4000/weather/{temperature}
+app.get("/weather/:temperature", (req,res) => {
+    //destructure temperature
+    const {temperature} = req.params
+    const phrase = `<h3>It was ${temperature} degrees outside!</h3>`;
     res.status(200).send(phrase);
 });
 
-
-
-//runs server
-app.listen(4000,() => console.log('i came from the year 4000'))
-
+//server listen on port
+app.listen(4000,() => console.log("Server runs on port 4000"));
