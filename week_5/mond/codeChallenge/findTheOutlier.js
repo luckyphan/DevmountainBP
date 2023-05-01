@@ -1,6 +1,6 @@
 function outlier (arr){ 
-    let even = []
-    let odd = []
+    let even = [];
+    let odd = [];
     arr.forEach(element => {
      element % 2 === 0 ? even.push(element) : odd.push(element);
     });
