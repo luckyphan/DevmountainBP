@@ -23,12 +23,13 @@ Table ideas
 
 Relationships
     One to one
-            Users and auth because each user can only have one auth and an auth can only be correlated to one user
-            Users and grocery_list each user can only have one list and the list is associated to one user
+        Users and auth because each user can only have one auth and an auth can only be correlated to one user
+       
     One to many
-        **user to recipes users can have many recipes but recipes can be pinned to one user
+        Users and grocery_list each user has a grocery list of many ingredients but only one list per user
+        User to recipes users can have many recipes but recipes can be pinned to one user
         ingredient to recipes many ingredients in recipe but recipe calls ingredient once
-        ingredient to grocery_list because grocery_list can have many ingredients but but grocery_list calls ingredient once
+        ingredient to grocery_list because grocery_list can have many ingredients but grocery_list calls ingredient once
     Many to many
         Occasion_list to occasionRecipe to recipes because the occasion can have many recipes and a recipe can be in many occasions
         User to shared_recipe_group because theres many users in a group and users can be in many groups
