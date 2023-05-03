@@ -1,0 +1,87 @@
+Brainstorm
+    Users
+    Auth 
+    Recipes: create, update, delete, public/private
+    Sharing: share with other users
+    Group to share: 
+    Group_id
+    (owner)user_id
+    (shared)user_id
+    Grocery list
+    Need connection with recipe and grocery list (if its in the recipe, then put on list)
+    Events
+    Need connection with event and recipes (if event calls for recipe)
+
+
+Table ideas
+    User: will hold info about the user, each line/row will be an individual user.
+    Auth: will hold credentials for logging-in, each line/row will be an individual credential.
+    Recipes: will hold info about recipes, each line/row will be an individual recipe.
+    Shared_recipe_group: will hold all the posts made in a group, each line/row will be an individual group post
+    Grocery_list: will hold info about the grocery list, each line/row will be an individual recipes
+    Occasion_list: will hold info about the occasions, each line/row will be an individual recipes
+
+Relationships
+    One to one
+            Users and auth because each user can only have one auth and an auth can only be correlated to one user
+            Users and grocery_list each user can only have one list and the list is associated to one user
+    One to many
+        **user to recipes users can have many recipes but recipes can be pinned to one user
+        ingredient to recipes many ingredients in recipe but recipe calls ingredient once
+        ingredient to grocery_list because grocery_list can have many ingredients but but grocery_list calls ingredient once
+    Many to many
+        Occasion_list to occasionRecipe to recipes because the occasion can have many recipes and a recipe can be in many occasions
+        User to shared_recipe_group because theres many users in a group and users can be in many groups
+		
+CREATE TABLE listUser(
+    user_id SERIAL PRIMARY KEY, 
+    first_name VARCHAR(40),
+    address VARCHAR(20)
+);
+
+CREATE TABLE auth(
+    auth_id SERIAL PRIMARY KEY, 
+    user_id INTEGER NOT NULL REFERENCES listuser(user_id),
+    password TEXT NOT NULL
+);
+
+
+
+CREATE TABLE recipes(
+    recipe_id SERIAL PRIMARY KEY, 
+    user_id INTEGER NOT NULL REFERENCES listuser(user_id),
+    shared_recipe_group INTEGER,
+    is_public BOOLEAN,
+  	body TEXT
+);
+
+CREATE TABLE shared_recipe_group(
+    group_id SERIAL PRIMARY KEY, 
+    owner INTEGER NOT NULL REFERENCES listuser(user_id),
+  	shared_user INTEGER NOT NULL REFERENCES listuser(user_id),
+    recipe_id INTEGER NOT NULL REFERENCES recipes(recipe_id)
+);
+
+CREATE TABLE occasionRecipe(
+    occasionRecipe_id SERIAL PRIMARY KEY, 
+  	occasion INTEGER NOT NULL REFERENCES occasion_list(occasion_id),
+    recipe_id INTEGER NOT NULL REFERENCES recipes(recipe_id)
+);
+
+CREATE TABLE occasion_list(
+    occasion_id SERIAL PRIMARY KEY,
+  	body TEXT
+);
+
+
+CREATE TABLE grocery_list(
+  grocery_list_id SERIAL PRIMARY KEY, 
+  user_id INTEGER NOT NULL REFERENCES listuser(user_id),
+  body TEXT
+);
+
+CREATE TABLE ingredient(
+  ingredient_id SERIAL PRIMARY KEY, 
+  recipe_id INTEGER NOT NULL REFERENCES recipes(recipe_id),
+  ingredient VARCHAR(20)
+);
