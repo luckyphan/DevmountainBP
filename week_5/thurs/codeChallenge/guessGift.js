@@ -2,13 +2,9 @@ function guessGifts (wl, pres){
     let presents = []
     for(let i = 0; i < pres.length; i++){
         wl.forEach(element => {
-           if( pres[i].size === element.size){
-                if( pres[i].clatters === element.clatters){
-                    if( pres[i].weight === element.weight){
+           if( pres[i].size === element.size && pres[i].clatters === element.clatters && pres[i].weight === element.weight){
                         presents.push(element.name)
-                }
-           }
-        }
+            }
         });
     }
     console.log(presents)
