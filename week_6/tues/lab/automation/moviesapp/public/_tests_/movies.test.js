@@ -6,9 +6,9 @@ beforeEach(async () => {
   driver = await new Builder().forBrowser(Browser.CHROME).build();
 });
 
-// afterEach(async () => {
-//   await driver.quit();
-// });
+afterEach(async () => {
+  await driver.quit();
+});
 
 describe("testing the movies app", () => {
   test("can add a movie", async() => {
@@ -28,8 +28,6 @@ describe("testing the movies app", () => {
     
     const dltButton = await driver.findElement(By.css('#movies-list li button'));
     dltButton.click();
-    
-    
     
 })
 })
